@@ -39,12 +39,15 @@ function List(props) {
 
 	function onClick() {
 		props.setTasks(tasks => [...tasks, { id: tasks.length + 1, description: newTask, completed: false }]);
+		setNewTask("");
+		let t=document.getElementById("txt");
+		t.value="";
 	}
 
 	return (
 		<div>
 			<h1>{ props.heading }</h1>
-			<input type="text" placeholder="Add a new task" onChange={onChange} />
+			<input id="txt" type="text" placeholder="Add a new task" onChange={onChange} />
 			<button type="button" onClick={onClick}>Add</button>
 			<ul>
 				{ props.tasks.map(task => <Task setTasks={props.setTasks} id={task.id} description={task.description} completed={task.completed} />) }
